@@ -16,6 +16,8 @@ namespace backend
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSpaStaticFiles(configuration: options => { options.RootPath = "wwwroot"; });
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,12 +30,15 @@ namespace backend
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+            app.UseSpaStaticFiles();
+            app.UseSpa(configuration: builder => 
             {
-                endpoints.MapGet("/", async context =>
+                if (env.IsDevelopment())
                 {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                    builder.UseProxyToSpaDevelopmentServer("http://localhost:8080");
+                }
             });
         }
     }
