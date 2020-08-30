@@ -1,21 +1,37 @@
+// Vue imports
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
 
-Vue.use(VueRouter)
+// 3rd party imports
+import Auth from '@okta/okta-vue'
 
-  const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  }
-]
+// our own imports
+import Dashboard from '@/components/Dashboard'
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+Vue.use(Auth, {
+  issuer: 'https://dev-914982.okta.com/oauth2/default',
+  client_id: '0oatq53f87ByM08MQ4x6',
+  redirect_uri: 'http://localhost:5001/implicit/callback',
+  scope: 'openid profile email'
 })
+
+Vue.use(Router)
+
+let router = new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/implicit/callback',
+      component: Auth.handleCallback()
+    },
+  ]
+})
+
+router.beforeEach(Vue.prototype.$auth.authRedirectGuard())
 
 export default router
