@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@okta/okta-vue": "^2.1.0",
+    "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
