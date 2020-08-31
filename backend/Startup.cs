@@ -58,8 +58,10 @@ namespace backend
                 app.UseDeveloperExceptionPage();
             }
 
-            dbContext.Database.EnsureCreated();
+            app.UseCors("VueCorsPolicy");
 
+            dbContext.Database.EnsureCreated();
+            app.UseAuthentication();
             app.UseMvc();
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
@@ -71,7 +73,6 @@ namespace backend
                     builder.UseProxyToSpaDevelopmentServer("http://localhost:8080");
                 }
             });
-            app.UseAuthentication();
         }
     }
 }
