@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 const client = axios.create({
-    baseURL: 'http://localhost:5001/api/pizzavotes',
+    baseURL: 'https://localhost:5001/api/pizzavotes',
     json: true
 })
 
@@ -27,6 +27,7 @@ export default {
         return this.execute('get', `/${id}`)
     },
     update(id, data) {
+        console.log('from the service:', id, data);
         return this.execute('put', `/${id}`, data)
     },
 }

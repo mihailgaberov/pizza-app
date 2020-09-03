@@ -2,7 +2,7 @@
   <div id="dashboard">
     <h1 class="h1">Love Pizza, Vote for Pizza</h1>
     <b-alert :show="loading" variant="info">Loading...</b-alert>
-    <b-btn type="submit" variant="success">Like +</b-btn>
+    <b-btn type="submit" variant="success" @click.prevent="addVote('mihail.gaberov@gmail.com', 1)">Like +</b-btn>
     <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza" />
     <b-btn type="submit" variant="danger">Dislike -</b-btn>
   </div>
@@ -16,7 +16,6 @@ export default {
     return {
       loading: false,
       records: [],
-      model: {}
     };
   },
   async created() {
@@ -33,8 +32,13 @@ export default {
         this.loading = false
       }
     },
-    async addVote(id) {
-        await api.update(id, this.model)
+    async addVote(id, dir) {
+      console.log('>>> addVote called...', id);
+      const data = {
+        dir,
+        dateTime: new Date(Date.now())
+      };
+        await api.update(id, data)
 
         // Fetch all records again to have latest data
         await this.getById(id)
