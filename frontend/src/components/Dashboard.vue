@@ -5,16 +5,16 @@
     <b-alert :show="loading" variant="info">Loading...</b-alert>
     <div class="main">
       <div class="positive">
-        <b-badge v-show="userRecords.value > 0" variant="success" class="count">{{ userRecords.value }}</b-badge>
-        <b-btn v-show="!loading" type="submit" variant="success"
+        <b-badge v-if="userRecords" v-show="userRecords.value > 0" variant="success" class="count">{{ userRecords.value }}</b-badge>
+        <b-btn v-show="!loading && isLogged" type="submit" variant="success"
                @click.prevent="addVote('mihail.gaberov@gmail.com', VOTES.UP)">
           Like +
         </b-btn>
       </div>
       <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza"/>
       <div class="negative">
-        <b-badge v-show="userRecords.value <= 0" variant="danger" class="count">{{ userRecords.value }}</b-badge>
-        <b-btn v-show="!loading" type="submit" variant="danger"
+        <b-badge v-if="userRecords" v-show="userRecords.value <= 0" variant="danger" class="count">{{ userRecords.value }}</b-badge>
+        <b-btn v-show="!loading && isLogged" type="submit" variant="danger"
                @click.prevent="addVote('mihail.gaberov@gmail.com', VOTES.DOWN)">Dislike -
         </b-btn>
       </div>
@@ -53,6 +53,7 @@ export default {
       loading: false,
       userRecords: {},
       error: "",
+      isLogged: false,
       VOTES: {
         UP: 'UP',
         DOWN: 'DOWN'
@@ -61,17 +62,18 @@ export default {
   },
   async created() {
     this.userRecords = await this.getById('mihail.gaberov@gmail.com')
-    console.log('user records: ', this.userRecords.id);
   },
   methods: {
     async getById(id) {
       this.loading = true
 
       try {
+        this.isLogged = true
         return await api.getById(id)
       } catch (error) {
         if (error && error.response && error.response.status === 401) {
           this.error = "Please login in order to be able to vote."
+          this.isLogged = false
         } else {
           this.error = error.message;
         }

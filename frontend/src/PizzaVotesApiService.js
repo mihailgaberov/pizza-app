@@ -30,7 +30,6 @@ export default {
         return this.execute('post', '/', data)
     },
     update(id, data) {
-        console.log('from the service:', id, data);
         return this.execute('put', `/${id}`, data)
     },
 }
