@@ -17,7 +17,14 @@ namespace backend.Controllers
         {
             _dbContext = dbContext;
         }
-    
+
+        // GET api/pizzavotes
+        [HttpGet]
+        public async Task<ActionResult<List<PizzaVotes>>> Get()
+        {
+            return await _dbContext.PizzaVotes.ToListAsync();
+        }
+
         // GET api/pizzavotes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PizzaVotes>> Get(string id)
