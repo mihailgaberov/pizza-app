@@ -37,7 +37,6 @@ namespace backend.Controllers
         public async Task Post(PizzaVotes model)
         {
             await _dbContext.AddAsync(model);
-
             await _dbContext.SaveChangesAsync();
         }
 
