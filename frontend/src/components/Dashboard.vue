@@ -23,17 +23,16 @@ export default {
     };
   },
   async created() {
-    const test = await this.getById('mihail.gaberov@gmail.com')
-    if (test) {
-      console.log('>>> records', this.records);
-    }
+    const userRecords = await this.getById('mihail.gaberov@gmail.com')
+    console.log('user records', userRecords);
   },
   methods: {
     async getById(id) {
       this.loading = true
 
       try {
-        this.records = await api.getById(id)
+        // this.records = await api.getById(id)
+        return await api.getById(id)
       } catch (error) {
         if (error.response.status === 401) {
           this.error = "Please login in order to be able to vote."
@@ -52,7 +51,6 @@ export default {
       };
       try {
         await api.create(data)
-
         // Fetch all records again to have latest data
         await this.getById(id)
       } catch (error) {
