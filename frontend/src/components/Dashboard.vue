@@ -1,10 +1,11 @@
 <template>
   <div id="dashboard">
     <h1 class="h1">Love Pizza, Vote for Pizza</h1>
+    <b-alert :show="error.length > 0" variant="danger">{{ error }}</b-alert>
     <b-alert :show="loading" variant="info">Loading...</b-alert>
-    <b-btn type="submit" variant="success" @click.prevent="addVote('mihail.gaberov@gmail.com', 1)">Like +</b-btn>
+    <b-btn v-show="!loading" type="submit" variant="success" @click.prevent="addVote('mihail.gaberov@gmail.com', 1)">Like +</b-btn>
     <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza" />
-    <b-btn type="submit" variant="danger">Dislike -</b-btn>
+    <b-btn v-show="!loading" type="submit" variant="danger">Dislike -</b-btn>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ export default {
     return {
       loading: false,
       records: [],
+      error: "",
     };
   },
   async created() {
@@ -28,20 +30,29 @@ export default {
 
       try {
         this.records = await api.getById(id)
-      } finally {
+      }
+      catch (error) {
+        this.error = error.message;
+      }
+      finally {
         this.loading = false
       }
     },
     async addVote(id, dir) {
-      console.log('>>> addVote called...', id);
       const data = {
+        id,
         dir,
         dateTime: new Date(Date.now())
       };
-        await api.update(id, data)
+      try {
+        await api.create(data)
 
         // Fetch all records again to have latest data
         await this.getById(id)
+      }
+      catch (error) {
+        this.error = error.message;
+      }
     }
   }
 }

@@ -25,14 +25,23 @@ namespace backend.Controllers
             return await _dbContext.PizzaVotes.ToListAsync();
         }
 
-        // GET api/pizzavotes/5
+        // GET api/pizzavotes/{email}
         [HttpGet("{id}")]
         public async Task<ActionResult<PizzaVotes>> Get(string id)
         {
             return await _dbContext.PizzaVotes.FindAsync(id);
         }
 
-        // PUT api/pizzavotes/5
+        // POST api/pizzavotes
+        [HttpPost]
+        public async Task Post(PizzaVotes model)
+        {
+            await _dbContext.AddAsync(model);
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+        // PUT api/pizzavotes/{email}
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, PizzaVotes model)
         {
