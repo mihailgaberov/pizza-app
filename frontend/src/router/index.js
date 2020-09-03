@@ -11,7 +11,7 @@ import Dashboard from '@/components/Dashboard'
 Vue.use(Auth, {
   issuer: 'https://dev-914982.okta.com/oauth2/default',
   client_id: '0oatq53f87ByM08MQ4x6',
-  redirect_uri: 'http://localhost:5001/implicit/callback',
+  redirect_uri: 'https://localhost:5001/implicit/callback',
   scope: 'openid profile email'
 })
 

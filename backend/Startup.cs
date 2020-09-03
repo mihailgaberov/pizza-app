@@ -38,7 +38,7 @@ namespace backend
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials()
-                    .WithOrigins("http://localhost:5001");
+                    .WithOrigins("http://localhost:8080");
                 });
             });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
