@@ -3,8 +3,10 @@
     <h1 class="h1">Love Pizza, Vote for Pizza</h1>
     <b-alert :show="error.length > 0" variant="danger">{{ error }}</b-alert>
     <b-alert :show="loading" variant="info">Loading...</b-alert>
-    <b-btn v-show="!loading" type="submit" variant="success" @click.prevent="addVote('mihail.gaberov@gmail.com', 1)">Like +</b-btn>
-    <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza" />
+    <b-btn v-show="!loading" type="submit" variant="success" @click.prevent="addVote('mihail.gaberov@gmail.com', 1)">
+      Like +
+    </b-btn>
+    <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza"/>
     <b-btn v-show="!loading" type="submit" variant="danger">Dislike -</b-btn>
   </div>
 </template>
@@ -21,8 +23,10 @@ export default {
     };
   },
   async created() {
-    this.getById('mihail.gaberov@gmail.com')
-    console.log('>>> records', this.records);
+    const test = await this.getById('mihail.gaberov@gmail.com')
+    if (test) {
+      console.log('>>> records', this.records);
+    }
   },
   methods: {
     async getById(id) {
@@ -30,11 +34,13 @@ export default {
 
       try {
         this.records = await api.getById(id)
-      }
-      catch (error) {
-        this.error = error.message;
-      }
-      finally {
+      } catch (error) {
+        if (error.response.status === 401) {
+          this.error = "Please login in order to be able to vote."
+        } else {
+          this.error = error.message;
+        }
+      } finally {
         this.loading = false
       }
     },
@@ -49,9 +55,12 @@ export default {
 
         // Fetch all records again to have latest data
         await this.getById(id)
-      }
-      catch (error) {
-        this.error = error.message;
+      } catch (error) {
+        if (error.response.status === 401) {
+          this.error = "Please login in order to be able to vote."
+        } else {
+          this.error = error.message;
+        }
       }
     }
   }
