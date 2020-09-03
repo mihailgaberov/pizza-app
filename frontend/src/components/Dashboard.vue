@@ -3,13 +3,46 @@
     <h1 class="h1">Love Pizza, Vote for Pizza</h1>
     <b-alert :show="error.length > 0" variant="danger">{{ error }}</b-alert>
     <b-alert :show="loading" variant="info">Loading...</b-alert>
-    <b-btn v-show="!loading" type="submit" variant="success" @click.prevent="addVote('mihail.gaberov@gmail.com', VOTES.UP)">
-      Like +
-    </b-btn>
-    <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza"/>
-    <b-btn v-show="!loading" type="submit" variant="danger" @click.prevent="addVote('mihail.gaberov@gmail.com', VOTES.DOWN)">Dislike -</b-btn>
+    <div class="main">
+      <div class="positive">
+        <b-badge v-show="userRecords.value > 0" variant="success" class="count">{{ userRecords.value }}</b-badge>
+        <b-btn v-show="!loading" type="submit" variant="success"
+               @click.prevent="addVote('mihail.gaberov@gmail.com', VOTES.UP)">
+          Like +
+        </b-btn>
+      </div>
+      <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza"/>
+      <div class="negative">
+        <b-badge v-show="userRecords.value <= 0" variant="danger" class="count">{{ userRecords.value }}</b-badge>
+        <b-btn v-show="!loading" type="submit" variant="danger"
+               @click.prevent="addVote('mihail.gaberov@gmail.com', VOTES.DOWN)">Dislike -
+        </b-btn>
+      </div>
+    </div>
   </div>
 </template>
+
+<style lang="scss">
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .count {
+    margin: 1em;
+  }
+}
+
+.positive {
+  display: flex;
+  flex-direction: column;
+}
+
+.negative {
+  display: flex;
+  flex-direction: column;
+}
+</style>
 
 <script>
 import api from '@/PizzaVotesApiService';
