@@ -13,7 +13,7 @@
       </b-navbar>
     </header>
     <main>
-      <router-view></router-view>
+      <router-view :user="user"></router-view>
     </main>
   </div>
 </template>

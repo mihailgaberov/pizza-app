@@ -3,6 +3,7 @@
     <h1 class="h1">Love Pizza, Vote for Pizza</h1>
     <b-alert :show="error.length > 0" variant="danger">{{ error }}</b-alert>
     <b-alert :show="loading" variant="info">Loading...</b-alert>
+    <div>user data: {{user}}</div>
     <div class="main">
       <div class="positive">
         <b-badge v-if="userRecords" v-show="userRecords.value > 0" variant="success" class="count">{{ userRecords.value }}</b-badge>
@@ -48,6 +49,7 @@
 import api from '@/PizzaVotesApiService';
 
 export default {
+  props: { user: Object },
   data() {
     return {
       loading: false,
@@ -62,6 +64,7 @@ export default {
   },
   async created() {
     this.userRecords = await this.getById('mihail.gaberov@gmail.com')
+    console.log('>>> props', this.$router)
   },
   methods: {
     async getById(id) {

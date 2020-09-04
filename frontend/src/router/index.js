@@ -23,7 +23,8 @@ let router = new Router({
     {
       path: '/',
       name: 'Dashboard',
-      component: Dashboard
+      component: Dashboard,
+      props: true
     },
     {
       path: '/implicit/callback',
