@@ -19,6 +19,7 @@
                @click.prevent="addVote(loggedInUser.email, VOTES.DOWN)">Dislike -
         </b-btn>
       </div>
+      <votes-chart :data="pizzaLovers"></votes-chart>
     </div>
   </div>
 </template>
@@ -47,8 +48,10 @@
 
 <script>
 import api from '@/PizzaVotesApiService';
+import VotesChart from '@/components/VotesChart';
 
 export default {
+  components: { VotesChart },
   props: { user: Object },
 
   watch: {
@@ -70,11 +73,11 @@ export default {
         DOWN: 'DOWN'
       },
       loggedInUser: this.user,
+      pizzaLovers: []
     }
   },
   async created() {
-    const test = await api.getAll();
-    console.log("test", test);
+    this.pizzaLovers = await api.getAll();
   },
   methods: {
     async getById(id) {
