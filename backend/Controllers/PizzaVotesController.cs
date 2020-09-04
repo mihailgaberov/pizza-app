@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 namespace backend.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
     [ApiController]
     public class PizzaVotesController : ControllerBase
     {
@@ -26,6 +25,7 @@ namespace backend.Controllers
         }
 
         // GET api/pizzavotes/{email}
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<PizzaVotes>> Get(string id)
         {
@@ -33,6 +33,7 @@ namespace backend.Controllers
         }
 
         // POST api/pizzavotes
+        [Authorize]
         [HttpPost]
         public async Task Post(PizzaVotes model)
         {
@@ -41,6 +42,7 @@ namespace backend.Controllers
         }
 
         // PUT api/pizzavotes/{email}
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(string id, PizzaVotes model)
         {

@@ -59,7 +59,6 @@ export default {
       }
     }
   },
-
   data() {
     return {
       loading: false,
@@ -72,6 +71,10 @@ export default {
       },
       loggedInUser: this.user,
     }
+  },
+  async created() {
+    const test = await api.getAll();
+    console.log("test", test);
   },
   methods: {
     async getById(id) {
