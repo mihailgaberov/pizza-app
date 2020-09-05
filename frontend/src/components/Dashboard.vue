@@ -9,16 +9,16 @@
         <b-badge v-if="userRecords" v-show="userRecords.value > 0" variant="success" class="count">{{ userRecords.value }}</b-badge>
         <b-btn v-show="!loading && isLogged" type="submit" variant="success"
                @click.prevent="addVote(loggedInUser.email, VOTES.UP)">
-          Like +
+          I love it
         </b-btn>
       </div>
       <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza"/>
-      <div class="negative">
+      <!--<div class="negative">
         <b-badge v-if="userRecords" v-show="userRecords.value <= 0" variant="danger" class="count">{{ userRecords.value }}</b-badge>
         <b-btn v-show="!loading && isLogged" type="submit" variant="danger"
                @click.prevent="addVote(loggedInUser.email, VOTES.DOWN)">Dislike -
         </b-btn>
-      </div>
+      </div>-->
       <votes-chart :data="pizzaLovers"></votes-chart>
     </div>
   </div>
