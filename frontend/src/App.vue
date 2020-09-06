@@ -8,6 +8,7 @@
           <b-navbar-nav>
             <b-nav-item href="#" @click.prevent="login" v-if="!user">Login</b-nav-item>
             <b-nav-item href="#" @click.prevent="logout" v-else>Logout</b-nav-item>
+            <username v-if="user" :username="user.email"></username>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -19,8 +20,10 @@
 </template>
 
 <script>
+import Username from "@/components/Username";
 export default {
   name: 'app',
+  components: { Username },
   data() {
     return {
       user: null

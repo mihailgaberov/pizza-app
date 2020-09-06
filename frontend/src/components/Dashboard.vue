@@ -13,12 +13,6 @@
         </b-btn>
       </div>
       <img src="../assets/pizza.png" alt="Love Pizza, Vote for Pizza"/>
-      <!--<div class="negative">
-        <b-badge v-if="userRecords" v-show="userRecords.value <= 0" variant="danger" class="count">{{ userRecords.value }}</b-badge>
-        <b-btn v-show="!loading && isLogged" type="submit" variant="danger"
-               @click.prevent="addVote(loggedInUser.email, VOTES.DOWN)">Dislike -
-        </b-btn>
-      </div>-->
       <votes-chart :data="pizzaLovers"></votes-chart>
     </div>
   </div>
@@ -57,7 +51,7 @@ export default {
   watch: {
     user: async function(newVal) {
       if (newVal) {
-        this.loggedInUser = newVal;
+        this.loggedInUser = newVal
         this.userRecords = await this.getById(newVal.email)
       }
     }
@@ -77,7 +71,7 @@ export default {
     }
   },
   async created() {
-    this.pizzaLovers = await api.getAll();
+    this.pizzaLovers = await api.getAll()
   },
   methods: {
     async getById(id) {
