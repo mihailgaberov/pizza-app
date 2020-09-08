@@ -9,3 +9,12 @@ In the home page, along with the signup/login buttons, we can put a little bar-c
 ### Screenshots
 ![screenshot](https://github.com/mihailgaberov/pizza-app/blob/master/screenshots/login.png)
 ![screenshot](https://github.com/mihailgaberov/pizza-app/blob/master/screenshots/dashboard.png)
+
+####
+Test users:
+
+mihail.gaberov@abv.bg:test123JLL
+
+bionicman@abv.bg:test123JLL
+
+...or register a new one via SIGN UP option on the login screen.
