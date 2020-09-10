@@ -10,11 +10,49 @@ In the home page, along with the signup/login buttons, we can put a little bar-c
 ![screenshot](https://github.com/mihailgaberov/pizza-app/blob/master/screenshots/login.png)
 ![screenshot](https://github.com/mihailgaberov/pizza-app/blob/master/screenshots/dashboard.png)
 
-####
-Test users:
+### Test users
 
 mihail.gaberov@abv.bg:test123JLL
 
 bionicman@abv.bg:test123JLL
 
 ...or register a new one via SIGN UP option on the login screen.
+
+
+### Frontend
+
+#### Project setup
+```
+npm install
+```
+
+#### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+#### Compiles and minifies for production
+```
+npm run build
+```
+
+#### Run your unit tests
+```
+npm run test:unit
+```
+
+#### Run your end-to-end tests
+```
+npm run test:e2e
+```
+
+### Backend
+#### To run the server app:
+```
+cd /backend && dotnet run
+```
+
+#### To run the back-end tests:
+```
+cd /backend/tests && dotnet test
+```
