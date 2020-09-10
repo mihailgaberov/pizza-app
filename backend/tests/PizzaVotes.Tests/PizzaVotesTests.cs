@@ -39,7 +39,7 @@ namespace PizzaVotes.Tests
             var response = await Client.GetAsync(request);
 
             // Assert
-            response.EnsureSuccessStatusCode();
+            Assert.Equal("Unauthorized", response.StatusCode.ToString());
         }
 
         [Fact]
@@ -62,7 +62,8 @@ namespace PizzaVotes.Tests
             var value = await response.Content.ReadAsStringAsync();
 
             // Assert
-            response.EnsureSuccessStatusCode();
+            Assert.Equal("Unauthorized", response.StatusCode.ToString());
+
         }
 
         [Fact]
@@ -83,7 +84,7 @@ namespace PizzaVotes.Tests
             var response = await Client.PutAsync(request.Url, ContentHelper.GetStringContent(request.Body));
 
             // Assert
-            response.EnsureSuccessStatusCode();
+            Assert.Equal("Unauthorized", response.StatusCode.ToString());
         }
     }
 }
