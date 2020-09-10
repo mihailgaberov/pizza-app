@@ -42,6 +42,11 @@ npm run test:unit
 ```
 
 #### Run your end-to-end tests
+First start the server from `backend` folder:
+```
+dotnet run
+```
+Then from `frontend` folder:
 ```
 npm run test:e2e
 ```
