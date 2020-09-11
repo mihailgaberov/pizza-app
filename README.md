@@ -22,23 +22,27 @@ bionicman@abv.bg:test123JLL
 ### Frontend
 
 #### Project setup
+From root project directory:
 ```
-npm install
+cd /frontend && npm install
 ```
 
 #### Compiles and hot-reloads for development
+From root project directory:
 ```
-npm run serve
+cd /frontend && npm run serve
 ```
 
 #### Compiles and minifies for production
+From root project directory:
 ```
-npm run build
+cd /frontend && npm run build
 ```
 
 #### Run your unit tests
+From root project directory:
 ```
-npm run test:unit
+cd /frontend && npm run test:unit
 ```
 
 #### Run your end-to-end tests
