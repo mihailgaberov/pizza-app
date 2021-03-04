@@ -68,3 +68,6 @@ cd /backend && dotnet run
 ```
 cd /backend/tests && dotnet test
 ```
+
+###### Note:
+The frontend URL is: https://localhost:5001/, not https://localhost:8080/.
