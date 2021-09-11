@@ -21,6 +21,11 @@ bionicman@abv.bg:test123JLL
 
 ...or register a new one via SIGN UP option on the login screen.
 
+### Stargazers
+[![Stargazers repo roster for @mihailgaberov/pizza-app](https://reporoster.com/stars/mihailgaberov/pizza-app)](https://github.com/mihailgaberov/pizza-app/stargazers)
+### Forkers
+[![Forkers repo roster for @mihailgaberov/pizza-app](https://reporoster.com/forks/mihailgaberov/pizza-app)](https://github.com/mihailgaberov/pizza-app/network/members)
+
 
 ### Frontend
 
