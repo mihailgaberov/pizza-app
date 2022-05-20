@@ -76,3 +76,8 @@ cd /backend/tests && dotnet test
 
 ###### Note:
 The frontend URL is: https://localhost:5001/, not https://localhost:8080/.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mihailgaberov/pizza-app&type=Date)](https://star-history.com/#mihailgaberov/pizza-app&Date)
+
