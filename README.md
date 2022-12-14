@@ -1,6 +1,6 @@
 # Love Pizza
 
->_I have written a tutorial about how I did this. You can find it [here](https://mihail-gaberov.eu/how-to-build-an-spa-with-vuejs-and-csharp-dotnet-core/)
+>_I have written a tutorial about how I did this. You can find it [here](https://www.mihailgaberov.com/how-to-build-a-spa-with-vue.js-and-c-using-.net-core)
 or [here](https://www.freecodecamp.org/news/how-to-build-an-spa-with-vuejs-and-c-using-net-core/)_
 
 ### SPA with VueJS and C# using .NET Core
